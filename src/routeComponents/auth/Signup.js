@@ -8,7 +8,7 @@ function Signup(props) {
     name: "",
     password: "",
     email: "",
-    // profilePictureUrl: "",
+    profilePictureUrl: "",
     country: "",
     city: "",
   });
@@ -16,7 +16,7 @@ function Signup(props) {
 
   function handleChange(event) {
     if (event.target.files) {
-      setState({
+      return setState({
         ...state,
         [event.currentTarget.name]: event.currentTarget.files[0],
       });
@@ -28,31 +28,32 @@ function Signup(props) {
     });
   }
 
-  // async function handleFileUpload(file) {
-  //   const uploadData = new FormData();
+  async function handleFileUpload(file) {
+    const uploadData = new FormData();
 
-  //   uploadData.append("profilePictureUrl", file);
+    uploadData.append("profilePicture", file);
+    console.log(uploadData);
+    const response = await api.post("/upload", uploadData);
 
-  //   const response = await api.post("/upload", uploadData);
-
-  //   return response.data.url;
-  // }
+    return response.data.url;
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      // const profilePicture = await handleFileUpload(state.profilePictureUrl);
-
-      const response = await api.post("/auth/signup", {
-        state,
-        // profilePicture,
+      const uploadImageProfile = await handleFileUpload(
+        state.profilePictureUrl
+      );
+      const response = await api.post("/signup", {
+        ...state,
+        profilePictureUrl: uploadImageProfile,
       });
       setState({
         name: "",
         password: "",
         email: "",
-        // profilePictureUrl: "",
+        profilePictureUrl: "",
         country: "",
         city: "",
       });
@@ -119,14 +120,14 @@ function Signup(props) {
           onChange={handleChange}
           required
         />
-        {/* <TextInput
+        <TextInput
           type="file"
-          label="Foto"
+          label="Foto do Perfil"
           name="profilePictureUrl"
-          value={state.profilePictureUrl}
           error={error}
           onChange={handleChange}
-        /> */}
+        />
+
         {error ? <div className="alert alert-danger">{error}</div> : null}
         <div>
           <button className="btn btn-primary mt-3" type="submit">

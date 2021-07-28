@@ -34,12 +34,6 @@ function App() {
             <Route path="/auth" component={AuthRouter} />
             <Route exact path="/forum" component={AllPosts} />
             <Route path="/criar-forum" component={CreatePostForum} />
-<<<<<<< HEAD
-            {/* <Route path="/criar-moradia" component={CreatePostMoradia} />
-            <Route path="/moradia" component={AllMoradias} />
-            <Route path="/criar-emprego" component={CreatePostJobs} />
-            <Route path="/emprego" component={AllJobs} /> */}
-=======
             <Route path="/forum/:id" component={DetailsPost} />
             <Route exact path="/edit-forum/:id" component={EditPost} />
             <Route path="/conteudo/:country" component={Contents} />
@@ -48,7 +42,6 @@ function App() {
             <Route path="/moradia" component={AllMoradias} />
             <Route path="/criar-emprego" component={CreatePostJobs} />
             <Route path="/emprego" component={AllJobs} />
->>>>>>> d993dee512dd41cdd26f3e8c58c69319dc774a4f
           </div>
         </Switch>
       </AuthContextComponent>

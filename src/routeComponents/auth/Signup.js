@@ -8,11 +8,11 @@ function Signup(props) {
     name: "",
     password: "",
     email: "",
-    profilePictureUrl: "",
+    // profilePictureUrl: "",
     country: "",
     city: "",
   });
-  const [errors, setErrors] = useState(null);
+  const [error, setError] = useState(null);
 
   function handleChange(event) {
     if (event.target.files) {
@@ -28,39 +28,39 @@ function Signup(props) {
     });
   }
 
-  async function handleFileUpload(file) {
-    const uploadData = new FormData();
+  // async function handleFileUpload(file) {
+  //   const uploadData = new FormData();
 
-    uploadData.append("profilePictureUrl", file);
+  //   uploadData.append("profilePictureUrl", file);
 
-    const response = await api.post("/upload", uploadData);
+  //   const response = await api.post("/upload", uploadData);
 
-    return response.data.url;
-  }
+  //   return response.data.url;
+  // }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      const profilePicture = await handleFileUpload(state.profilePictureUrl);
+      // const profilePicture = await handleFileUpload(state.profilePictureUrl);
 
-      const response = await api.post("/signup", {
-        ...state,
-        profilePicture,
+      const response = await api.post("/auth/signup", {
+        state,
+        // profilePicture,
       });
       setState({
         name: "",
         password: "",
         email: "",
-        profilePictureUrl: "",
+        // profilePictureUrl: "",
         country: "",
         city: "",
       });
-      setErrors(null);
+      setError(null);
       props.history.push("/auth/login");
     } catch (err) {
       console.error(err.response);
-      // setErrors({ ...err.response.data.errors });
+      setError(err.response.data.error);
     }
   }
   console.log(state);
@@ -75,7 +75,7 @@ function Signup(props) {
           label="Nome"
           name="name"
           value={state.name}
-          error={errors}
+          error={error}
           onChange={handleChange}
           required
         />
@@ -85,7 +85,7 @@ function Signup(props) {
           label="E-mail"
           name="email"
           value={state.email}
-          error={errors}
+          error={error}
           onChange={handleChange}
           required
         />
@@ -95,7 +95,7 @@ function Signup(props) {
           label="Senha"
           name="password"
           value={state.password}
-          error={errors}
+          error={error}
           onChange={handleChange}
           required
         />
@@ -105,7 +105,7 @@ function Signup(props) {
           label="País"
           name="country"
           value={state.country}
-          error={errors}
+          error={error}
           onChange={handleChange}
           required
         />
@@ -115,19 +115,19 @@ function Signup(props) {
           label="Cidade"
           name="city"
           value={state.city}
-          error={errors}
+          error={error}
           onChange={handleChange}
           required
         />
-        <TextInput
+        {/* <TextInput
           type="file"
           label="Foto"
           name="profilePictureUrl"
           value={state.profilePictureUrl}
-          error={errors}
+          error={error}
           onChange={handleChange}
-        />
-
+        /> */}
+        {error ? <div className="alert alert-danger">{error}</div> : null}
         <div>
           <button className="btn btn-primary mt-3" type="submit">
             Cadastrar

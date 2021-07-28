@@ -27,10 +27,10 @@ function App() {
             <Route path="/auth" component={AuthRouter} />
             <Route path="/forum" component={AllPosts} />
             <Route path="/criar-forum" component={CreatePostForum} />
-            <Route path="/criar-moradia" component={CreatePostMoradia} />
+            {/* <Route path="/criar-moradia" component={CreatePostMoradia} />
             <Route path="/moradia" component={AllMoradias} />
             <Route path="/criar-emprego" component={CreatePostJobs} />
-            <Route path="/emprego" component={AllJobs} />
+            <Route path="/emprego" component={AllJobs} /> */}
           </div>
         </Switch>
         <Footer />

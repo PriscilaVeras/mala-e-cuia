@@ -27,9 +27,7 @@ function AllHabitation() {
     <div className="container mt-5">
       {moradias.map((moradia) => {
         return (
-  
           <Link to={`/moradia/${moradia._id}`}>
-     
             <div className="card mb-3" style={{ maxWidth: "540px" }}>
               <div className="row no-gutters">
                 <div className="col-md-4">

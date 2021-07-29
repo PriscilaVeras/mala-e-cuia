@@ -34,8 +34,8 @@ import EditJobs from "../routeComponents/jobs/EditJobs";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <AuthContextComponent>
+        <Header />
         <Switch>
           <div className="container-rotas">
             <Route exact path="/" component={Home} />

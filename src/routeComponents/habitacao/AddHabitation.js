@@ -66,6 +66,7 @@ function AddHabitation() {
   }
   return (
     <div className="container mt-5 margin-footer">
+      <h1 className="">Cadastre o seu imóvel</h1>
       <form onSubmit={handleSubmit}>
         <TextInput
           type="text"
@@ -142,7 +143,11 @@ function AddHabitation() {
         </div>
 
         <div className="form-group">
-          <button className="btn btn-primary mt-3" type="submit">
+          <button
+            className="btn yellowTaxi mt-3"
+            type="submit"
+            style={{ color: "white" }}
+          >
             Enviar
           </button>
         </div>

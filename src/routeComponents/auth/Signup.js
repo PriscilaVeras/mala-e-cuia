@@ -67,7 +67,7 @@ function Signup(props) {
   console.log(state);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 margin-footer">
       <form onSubmit={handleSubmit}>
         <h1>Cadastro</h1>
 

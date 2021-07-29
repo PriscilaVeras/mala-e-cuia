@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
+import EditProfile from "./EditProfile";
 
 function AuthRouter(props) {
   return (
@@ -11,6 +12,7 @@ function AuthRouter(props) {
       <Switch>
         <Route path={`${props.match.path}/signup`} component={Signup} />
         <Route path={`${props.match.path}/login`} component={Login} />
+        <Route path={`${props.match.path}/profile`} component={EditProfile} />
       </Switch>
     </React.Fragment>
   );

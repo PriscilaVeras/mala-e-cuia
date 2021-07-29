@@ -1,5 +1,13 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { AuthContextComponent } from "../contexts/authContext";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../assets/styles/index.css";
+
+import Header from "./Header";
+import Footer from "./Footer";
+
+import "../assets/styles/index.css";
 
 import Home from "../routeComponents/Home";
 import AuthRouter from "../routeComponents/auth/AuthRouter";
@@ -14,19 +22,17 @@ import EditPost from "../routeComponents/forum/EditPost";
 import Contents from "../routeComponents/informacoes/Contents";
 
 // Moradia components
-import CreatePostMoradia from "../routeComponents/habitation/CreatePostMoradia";
-import AllMoradias from "../routeComponents/habitation/AllMoradias";
+import CreatePostMoradia from "../routeComponents/habitacao/CriarPostMoradia";
+import AllMoradias from "../routeComponents/habitacao/TodasMoradias";
 
+// Emprego components
 import CreatePostJobs from "../routeComponents/jobs/CreatePostJobs";
 import AllJobs from "../routeComponents/jobs/AllJobs";
-
-import { AuthContextComponent } from "../contexts/authContext";
-import Footer from "./Footer";
-import "../assets/styles/index.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <AuthContextComponent>
         <Switch>
           <div className="container-rotas">

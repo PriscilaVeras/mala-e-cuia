@@ -1,53 +1,54 @@
-// import { useState, useEffect } from "react";
-// // import { useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// import axios from "axios";
-// import api from "../../apis/api";
+import api from "../../apis/api";
 
-// function AllJobs() {
-//   const [jobs, setJobs] = useState([]);
+function AllJobs() {
+  const [empregos, setEmpregos] = useState([]);
 
-//   //buscar e montar todos os posts do back
-//   useEffect(() => {
-//     async function fetchJobs() {
-//       try {
-//         const response = await api.get("/emprego");
-//         console.log(response);
-//         setJobs([...response.data]);
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     }
-//     fetchJobs();
-//   }, []);
+  // buscar e montar todos os posts do back
+  useEffect(() => {
+    async function fetchEmpregos() {
+      try {
+        const response = await api.get("/emprego");
+        console.log(response);
+        setEmpregos([...response.data]);
 
-//   return (
-//     <div className="container mt-5">
-//       {jobs.map((job) => {
-//         return (
-//           <Link>
-//             <div className="card mb-3" style={{ maxWidth: "540px" }}>
-//               <div className="row no-gutters">
-//                 <div className="col-md-4">
-//                   <img src={job.title} className="card-img" alt="..." />
-//                 </div>
-//                 <div className="col-md-8">
-//                   <div className="card-body">
-//                     <h5 className="card-title">{job.company}</h5>
-//                     <p className="card-text">{job.description}</p>
-//                     <p className="card-text">
-//                       <small className="text-muted">{job.Url}</small>
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </Link>
-//         );
-//       })}
-//     </div>
-//   );
-// }
+        console.log("oi");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchEmpregos();
+  }, []);
 
-// export default AllJobs;
+  return (
+    <div className="container mt-5">
+      {empregos.map((emprego) => {
+        return (
+          <Link to={`/emprego/${emprego._id}`}>
+            <div className="card mb-3" style={{ maxWidth: "540px" }}>
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  {/* <img src={moradia.photo} className="card-img" alt="..." /> */}
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{emprego.title}</h5>
+                    <p className="card-text">{emprego.description}</p>
+                    <p className="card-text">
+                      <small className="text-muted">{emprego.salary}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+export default AllJobs;

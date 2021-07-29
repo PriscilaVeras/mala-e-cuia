@@ -24,12 +24,14 @@ import Contents from "../routeComponents/informacoes/Contents";
 // Moradia components
 import AddHabitation from "../routeComponents/habitacao/AddHabitation";
 import AllHabitation from "../routeComponents/habitacao/AllHabitation";
-import DetailsHabitation from "../routeComponents/habitacao/DetailsHabitation"
-import EditHabitation from "../routeComponents/habitacao/EditHabitation"
+import DetailsHabitation from "../routeComponents/habitacao/DetailsHabitation";
+import EditHabitation from "../routeComponents/habitacao/EditHabitation";
 
 // Emprego components
-import CreatePostJobs from "../routeComponents/jobs/CreatePostJobs";
 import AllJobs from "../routeComponents/jobs/AllJobs";
+import AddJobs from "../routeComponents/jobs/AddJobs";
+import DetailsJobs from "../routeComponents/jobs/DetailsJobs";
+import EditJobs from "../routeComponents/jobs/EditJobs";
 
 function App() {
   return (
@@ -50,9 +52,11 @@ function App() {
             <Route path="/adicionar-moradia" component={AddHabitation} />
             <Route path="/moradia/:id" component={DetailsHabitation} />
             <Route path="/editar-moradia/:id/" component={EditHabitation} />
-            
-            <Route path="/criar-emprego" component={CreatePostJobs} />
-            <Route path="/emprego" component={AllJobs} />
+
+            <Route exact path="/emprego" component={AllJobs} />
+            <Route path="/adicionar-emprego" component={AddJobs} />
+            <Route path="/emprego/:id" component={DetailsJobs} />
+            <Route path="/editar-emprego/:id/" component={EditJobs} />
           </div>
         </Switch>
       </AuthContextComponent>

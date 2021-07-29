@@ -1,6 +1,6 @@
-// import { useState, useEffect } from "react";
-// // import { useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import api from "../../apis/api";
 
@@ -8,20 +8,20 @@ function AllHabitation() {
   const [moradias, setMoradias] = useState([]);
 
   // buscar e montar todos os posts do back
-  // useEffect(() => {
-  //   async function fetchMoradias() {
-  //     try {
-  //       const response = await api.get("/moradia");
-  //       console.log(response);
-  //       setMoradias([...response.data]);
+  useEffect(() => {
+    async function fetchMoradias() {
+      try {
+        const response = await api.get("/moradia");
+        console.log(response);
+        setMoradias([...response.data]);
 
-  //       console.log("oi");
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchMoradias();
-  // }, []);
+        console.log("oi");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchMoradias();
+  }, []);
 
   return (
     <div className="container mt-5">

@@ -61,7 +61,7 @@ function Signup(props) {
       props.history.push("/auth/login");
     } catch (err) {
       console.error(err.response);
-      setError(err.response.data.error);
+      // setError(err.response.data.error);
     }
   }
   console.log(state);
